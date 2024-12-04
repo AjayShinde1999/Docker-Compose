@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: emp_demo_db
+      POSTGRES_USER: Ajay
+      POSTGRES_PASSWORD: Ajay
+
+  app:
+    image: simple-docker-postgresql
+    ports:
+      - 8080:8080
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/emp_demo_db
+      SPRING_DATASOURCE_USERNAME: Ajay
+      SPRING_DATASOURCE_PASSWORD: Ajay
+    depends_on:
+      - db
+
+
+
